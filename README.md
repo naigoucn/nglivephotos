@@ -1,4 +1,4 @@
-# WordPress LivePhoto Block for Gutenberg
+# WordPress NGLivePhoto Block
 
 🚀 为古腾堡编辑器添加动态实况图支持 | [在线演示](https://www.naigou.cn/737.html) 
 
