@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: 奶狗LivePhotos
+Plugin Name: Apple Live Photo Embedder
 Version: 1.0
 Description: 通过短代码和自定义Gutenberg区块在文章中嵌入 Apple 实况照片
 */
@@ -71,6 +71,42 @@ add_action('wp_head', function() {
             opacity: 1;
         }
     </style>';
+});
+
+// 确保在AJAX请求后加载 LivePhotosKit
+add_action('wp_footer', function() {
+    ?>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof jQuery !== 'undefined') {
+                jQuery(document).on('ajaxComplete', function(event, xhr, settings) {
+                    if (document.querySelector('[data-live-photo]')) {
+                        if (!window.LivePhotosKit) {
+                            var script = document.createElement('script');
+                            script.src = 'https://cdn.apple-livephotoskit.com/lpk/1/livephotoskit.js';
+                            script.onload = function() {
+                                initLivePhotos();
+                            };
+                            document.body.appendChild(script);
+                        } else {
+                            initLivePhotos();
+                        }
+                    }
+                });
+            }
+        });
+
+        function initLivePhotos() {
+            var livePhotos = document.querySelectorAll('[data-live-photo]');
+            livePhotos.forEach(function(livePhoto) {
+                new LivePhotosKit.Player(livePhoto, {
+                    photoSrc: livePhoto.getAttribute('data-photo-src'),
+                    videoSrc: livePhoto.getAttribute('data-video-src')
+                });
+            });
+        }
+    </script>
+    <?php
 });
 
 
