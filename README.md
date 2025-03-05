@@ -1,6 +1,6 @@
 # WordPress LivePhoto Block for Gutenberg
 
-🚀 为古腾堡编辑器添加动态实况图支持 | [在线演示](#) | [文档](#) | [问题反馈](https://github.com/yourname/wordpress-livephoto-block/issues)
+🚀 为古腾堡编辑器添加动态实况图支持 | [在线演示]([#](https://www.naigou.cn/737.html)) | 
 
 ![LivePhoto演示效果](https://via.placeholder.com/800x400.png?text=LivePhoto+Preview+GIF)
 
